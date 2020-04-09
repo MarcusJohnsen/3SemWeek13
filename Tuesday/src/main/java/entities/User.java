@@ -49,17 +49,18 @@ public class User implements Serializable {
 
   public User() {}
 
-  //TODO Change when password is hashed
    public boolean verifyPassword(String pw){
-        return(pw.equals(userPass));
+       if (BCrypt.checkpw(pw, userPass)) {
+        return(true);
+       } else {
+        return(false); 
+       }
     }
 
   public User(String userName, String userPass) {
     this.userName = userName;
-
-    this.userPass = userPass;
+    this.userPass = BCrypt.hashpw(userPass, BCrypt.gensalt());
   }
-
 
   public String getUserName() {
     return userName;
@@ -73,8 +74,8 @@ public class User implements Serializable {
     return this.userPass;
   }
 
-  public void setUserPass(String userPass) {
-    this.userPass = userPass;
+   public void setUserPass(String userPass) {
+    this.userPass = BCrypt.hashpw(userPass, BCrypt.gensalt());
   }
 
   public List<Role> getRoleList() {

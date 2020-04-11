@@ -14,11 +14,6 @@ import com.google.gson.GsonBuilder;
 import java.util.ArrayList;
 import webscraper.TagDTO;
 
-/**
- * REST Web Service
- *
- * @author lam
- */
 @Path("scrape")
 public class WebScraperResource {
 
@@ -32,7 +27,6 @@ public class WebScraperResource {
     }
 
     private String makeResponse() {
-        //return "{\"todo\":\"Make me return the calculated values from the external requests\"}"; 
         List<TagCounter> dataFeched = Tester.runSequental();
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         List<TagDTO> results = new ArrayList();
@@ -41,5 +35,4 @@ public class WebScraperResource {
         }
         return gson.toJson(results);
     }
-
 }

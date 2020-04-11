@@ -15,12 +15,9 @@ public class TagCounter {
     this.url = url;
   }
   
-  /*
-  Connect to the URL and count the number of h1, h2, div and body Tags
-  */
   public void doWork() {
     if(isCalled){
-      return; //Tag values allready set
+      return;
     }
     isCalled= true;
     Document doc;
@@ -63,5 +60,4 @@ public class TagCounter {
   public int getBodyCount() {
     return bodyCount;
   }
-  
 }

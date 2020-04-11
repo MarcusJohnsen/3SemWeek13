@@ -111,10 +111,8 @@ function Products({ bookFacade }) {
           return (
             <li key={book.id}>
               {book.title}
-              {book.title},{" "}
-              <NavLink exact activeClassName="active" to={`${url}/${book.id}`}>
-                details
-              </NavLink>
+              &nbsp;
+              <Link to={`${url}/${book.id}`}>Details about book</Link>
             </li>
           );
         })}
